@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart with Centered Text</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0b1522;
+      }
+      .heart {
+        height: 100px;
+        width: 100px;
+        background: #f20044;
+        position: relative;
+        transform: rotate(-45deg);
+        box-shadow: -10px 10px 90px #f20044;
+        animation: heart 0.6s linear infinite;
+      }
+      @keyframes heart {
+        0% {
+          transform: rotate(-45deg) scale(1.07);
+        }
+        80% {
+          transform: rotate(-45deg) scale(1);
+        }
+        100% {
+          transform: rotate(-45deg) scale(0.8);
+        }
+      }
+
+      .heart::before {
+        content: "";
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background: #f20044;
+        top: -50px;
+        box-shadow: -10px -10px 90px #f20044;
+        border-radius: 50px;
+      }
+      .heart::after {
+        content: "";
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background: #f20044;
+        right: -50px;
+        border-radius: 50px;
+        box-shadow: 10px 10px 90px #f20044;
+      }
+
+      /* Centering text with absolute positioning and correcting rotation */
+      .heart-text {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 40%;
+        left: 60%;
+        transform: translate(-50%, -50%) rotate(45deg); /* Translate to center and rotate back upright */
+        z-index: 1; /* Make sure the text is on top of the heart shape */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heart">
+      <div class="heart-text">W+Z</div>
+    </div>
+  </body>
+</html>
