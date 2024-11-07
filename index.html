@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <title>Heart with Centered Text</title>
     <style>
       body {
@@ -13,6 +19,7 @@
         align-items: center;
         justify-content: center;
         background: #0b1522;
+        flex-direction: column;
       }
       .heart {
         height: 100px;
@@ -67,15 +74,42 @@
         transform: translate(-50%, -50%) rotate(45deg); /* Translate to center and rotate back upright */
         z-index: 1; /* Make sure the text is on top of the heart shape */
       }
+
+      /* Button styling */
+      #playButton {
+        margin-top: 3em;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #f20044;
+        font-family: "Lobster", sans-serif;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      }
     </style>
   </head>
   <body>
     <div class="heart">
       <div class="heart-text"></div>
     </div>
-    <audio autoplay loop>
+
+    <!-- Play button for user interaction to start the audio -->
+    <button id="playButton" onclick="playAudio()">Play Music</button>
+
+    <!-- Hidden audio element to play the song -->
+    <audio id="background-audio" loop>
       <source src="spotifydown.com - Let's Get It On.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
+
+    <script>
+      function playAudio() {
+        const audio = document.getElementById("background-audio");
+        audio.play();
+        document.getElementById("playButton").style.display = "none"; // Hide button after playing
+      }
+    </script>
   </body>
 </html>
